@@ -13,10 +13,43 @@ body {
     display: block;
     top: 0px;
     left: 0px;
+    bottom: 0px;
+    right: 0px;
     width: auto;
     height: auto;
-    right: 0px;
+}
+
+#info {
+    position: absolute;
+    right: 15px;
+    bottom: 18px;
+    width: 13px;
+    height: 13px;
+    top: 42px;
+    left: 331px;
+}
+
+#back {
+    display: none;
+}
+
+#backImg {
+    position: absolute;
+    display: block;
+    top: 0px;
+    left: 0px;
     bottom: 0px;
+    right: 0px;
+    width: auto;
+    height: auto;
+}
+
+#done {
+    position: absolute;
+    right: 24px;
+    margin-left: auto;
+    bottom: 24px;
+    margin-top: auto;
 }
 
 #length {
@@ -26,7 +59,7 @@ body {
     font-family: HelveticaNeue;
     font-size: 10pt;
     left: 114px;
-    top: 58px;
+    top: 22px;
     text-align: right;
     font-weight: normal;
     font-style: normal;
@@ -41,9 +74,9 @@ body {
     height: auto;
     position: absolute;
     left: 32px;
-    top: 62px;
+    top: 26px;
     margin-top: 0px;
-    color: rgb(40, 40, 40);
+    color: rgb(217, 217, 217);
 }
 
 .selected #text {
@@ -57,7 +90,7 @@ body {
     height: 18px;
     position: absolute;
     left: 200px;
-    top: 62px;
+    top: 26px;
     right: auto;
     bottom: auto;
     margin-top: 0px;
@@ -70,7 +103,7 @@ body {
     text-align: left;
     vertical-align: middle;
     font-family: 'Lucida Grande';
-    color: rgb(40, 40, 40);
+    color: rgb(217, 217, 217);
     width: auto;
     height: auto;
     right: 18px;
@@ -93,13 +126,14 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
     width: auto;
-    height: 12px;
+    height: auto;
     position: absolute;
     left: 245px;
-    text-align: right;
-    bottom: 42px;
-    margin-top: auto;
+    top: 45px;
+    margin-top: 0px;
     right: 95px;
+    bottom: 13px;
+    text-align: right;
 }
 
 .selected #lengthInfo {
@@ -118,7 +152,5 @@ body {
     top: 25px;
     margin-top: 0px;
     left: 275px;
-    bottom: 55px;
-    opacity: 1;
-    color: rgb(255, 255, 255);
+    bottom: 25px;
 }

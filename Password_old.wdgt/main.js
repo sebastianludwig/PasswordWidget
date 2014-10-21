@@ -106,6 +106,9 @@ function showFront(event)
 
     if (window.widget) {
         setTimeout('widget.performTransition();', 0);
+        
+        widget.setPreferenceForKey(document.getElementById("strong").checked ? 1 : 0, "strong");
+        widget.setPreferenceForKey(document.getElementById("length").value, "length");
     }    
 }
 
@@ -161,9 +164,6 @@ function minLength()
 
 function generatePassword(event)
 {
-    widget.setPreferenceForKey(document.getElementById("strong").checked ? 1 : 0, "strong");
-    widget.setPreferenceForKey(document.getElementById("length").value, "length");
-    
     var strong = isStrong();
     var length = Math.round(minLength() * (1 + Math.random() * 0.4));
     var password = "";

@@ -5,12 +5,11 @@
  code generator otherwise the changes will be lost.
  */
 var dashcodePartSpecs = {
-    "button1": { "creationFunction": "CreateButton", "leftImageWidth": 10, "onclick": "generatePassword", "rightImageWidth": 10, "text": "Next" },
-    "done": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done" },
-    "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "black", "frontID": "front", "onclick": "showBack" },
+    "button1": { "creationFunction": "CreateButton", "leftImageWidth": 11, "onclick": "generatePassword", "rightImageWidth": 11, "text": "Next" },
     "lengthInfo": { "view": "DC.Text" },
     "text": { "text": "Min. Length", "view": "DC.Text" }
 };
+
 
 
 
