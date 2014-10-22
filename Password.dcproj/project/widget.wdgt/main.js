@@ -23,7 +23,7 @@ function remove()
     // Remove any preferences as needed
     // widget.setPreferenceForKey(null, dashcode.createInstancePreferenceKey("your-key"));
     if (window.widget) {
-        widget.setPreferenceForKey(null, "strong");
+        widget.setPreferenceForKey(null, "strength");
         widget.setPreferenceForKey(null, "length");
     }
 }
@@ -40,7 +40,15 @@ function hide()
 
 function onChange(event)
 {
-    widget.setPreferenceForKey(document.getElementById("strong").checked ? 1 : 0, "strong");
+    var strength = "";
+    if (document.getElementById("weak").checked) {
+        strength = "weak";
+    } else if (document.getElementById("normal").checked) {
+        strength = "normal";
+    } else {
+        strength = "strong";
+    }
+    widget.setPreferenceForKey(strength, "strength");
     widget.setPreferenceForKey(document.getElementById("length").value, "length");
 }
 
@@ -50,7 +58,8 @@ function onChange(event)
 //
 function show()
 {
-    document.getElementById("strong").checked = isStrong();
+    document.activeElement.blur();
+    document.getElementById(strength()).checked = true;
     document.getElementById("length").value = minLength();
 }
 
@@ -75,6 +84,11 @@ if (window.widget) {
     widget.onsync = sync;
 }
 
+function onTextSelect(event) {
+    event.target.previousElementSibling.checked = true;
+    onChange(event);
+}
+
 function getLetter()
 {
     var letter = (Math.floor(Math.random() * 26) + 10).toString(36);
@@ -95,17 +109,17 @@ function getSpecial(strong)
     return selection.charAt(Math.floor(Math.random()*selection.length));
 }
 
-function isStrong()
+function strength()
 {
     if (window.widget) {
-        var strongSetting = widget.preferenceForKey("strong");
+        var strengthSetting = widget.preferenceForKey("strength");
         
-        if (strongSetting) {
-            return true;
+        if (strengthSetting) {
+            return strengthSetting;
         }
     }
     
-    return true;
+    return "strong";
 }
 
 function minLength()
@@ -128,16 +142,16 @@ function showPassword(password)
 
 function generatePassword(event)
 {   
-    var strong = isStrong();
-    var length = Math.round(minLength() * (1 + Math.random() * 0.4));
+    var pwStrength = strength();
+    var length = Math.round(minLength() * (1 + Math.random() * 0.3));
     var password = "";
     
     for (i = 0; i < length; ++i) {
         var chance = Math.random();
         if (chance > 0.85) {
             password += Math.floor(Math.random() * 10);
-        } else if (chance > 0.5) {
-            password += getSpecial(strong);
+        } else if (chance > 0.5 && pwStrength != "weak") {
+            password += getSpecial(pwStrength == "strong");
         } else {
             password += getLetter();
         }

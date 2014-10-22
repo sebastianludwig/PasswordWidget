@@ -15,7 +15,7 @@ body {
     left: 0px;
     width: auto;
     height: auto;
-    right: 0px;
+    right: 1px;
     bottom: 0px;
 }
 
@@ -50,36 +50,9 @@ body {
     color: white;
 }
 
-#checkbox {
-    width: 80px;
-    font-family: HelveticaNeue;
-    font-size: 10pt;
-    height: 18px;
-    position: absolute;
-    left: 200px;
-    top: 62px;
-    right: auto;
-    bottom: auto;
-    margin-top: 0px;
-}
-
-#div {
-    position: absolute;
-    top: 1px;
-    left: 20px;
-    text-align: left;
-    vertical-align: middle;
-    font-family: 'Lucida Grande';
-    color: rgb(40, 40, 40);
-    width: auto;
-    height: auto;
-    right: 18px;
-    bottom: 1px;
-}
-
 #password {
     position: absolute;
-    width: 231px;
+    width: 257px;
     color: black;
     font-family: Menlo;
     font-size: 10pt;
@@ -117,8 +90,73 @@ body {
     position: absolute;
     top: 25px;
     margin-top: 0px;
-    left: 275px;
-    bottom: 55px;
+    left: 299px;
     opacity: 1;
     color: rgb(255, 255, 255);
+    bottom: 55px;
+}
+
+#radioStrong {
+    width: 65px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 19px;
+    position: absolute;
+    left: 167px;
+    top: 62px;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+}
+
+#div {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+#radioNormal {
+    width: 64px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 19px;
+    position: absolute;
+    left: 237px;
+    top: 62px;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+}
+
+#div1 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+#radioWeak {
+    width: 55px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 19px;
+    position: absolute;
+    left: 304px;
+    top: 62px;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+}
+
+#div2 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    right: auto;
+    bottom: auto;
 }

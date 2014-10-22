@@ -15,12 +15,20 @@
         <input id="password" type="text" name="" value="">
         <div id="lengthInfo"></div>
         <div id="button1"></div>
-        <div id="checkbox" onclick="onChange(event)">
-            <input type="checkbox" name="Checkbox" checked="checked" id="strong">
-            <div id="div">Strong</div>
-        </div>
         <div id="text"></div>
         <input id="length" type="text" name="" value="16" onchange="onChange(event)">
+        <div id="radioStrong">
+            <input type="radio" name="strength" id="strong" value="strong" onchange="onChange(event)" checked="checked">
+            <div id="div" onclick="onTextSelect(event)">$t®0ñg</div>
+        </div>
+        <div id="radioNormal">
+            <input type="radio" name="strength" id="normal" value="normal" onchange="onChange(event)">
+            <div id="div1" onclick="onTextSelect(event)">N()rma!</div>
+        </div>
+        <div id="radioWeak">
+            <input type="radio" name="strength" id="weak" value="weak" onchange="onChange(event)">
+            <div id="div2" onclick="onTextSelect(event)">W3ak</div>
+        </div>
     </div>
 </body>
 </html>
