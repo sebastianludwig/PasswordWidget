@@ -34,7 +34,14 @@ function remove()
 //
 function hide()
 {
-    // Stop any timers to prevent CPU usage
+    onChange(null);
+    showPassword("");
+}
+
+function onChange(event)
+{
+    widget.setPreferenceForKey(document.getElementById("strong").checked ? 1 : 0, "strong");
+    widget.setPreferenceForKey(document.getElementById("length").value, "length");
 }
 
 //
@@ -43,7 +50,8 @@ function hide()
 //
 function show()
 {
-    // Restart any timers that were stopped on hide
+    document.getElementById("strong").checked = isStrong();
+    document.getElementById("length").value = minLength();
 }
 
 //
@@ -58,55 +66,6 @@ function sync()
     //
     // Or this for global key's value:
     // globalPreferenceValue = widget.preferenceForKey(null, "your-key");
-}
-
-//
-// Function: showBack(event)
-// Called when the info button is clicked to show the back of the widget
-//
-// event: onClick event from the info button
-//
-function showBack(event)
-{
-    var front = document.getElementById("front");
-    var back = document.getElementById("back");
-
-    if (window.widget) {
-        widget.prepareForTransition("ToBack");
-    }
-
-    front.style.display = "none";
-    back.style.display = "block";
-
-    if (window.widget) {
-        setTimeout('widget.performTransition();', 0);
-        
-        document.getElementById("strong").checked = isStrong();
-        document.getElementById("length").value = minLength();
-    }
-}
-
-//
-// Function: showFront(event)
-// Called when the done button is clicked from the back of the widget
-//
-// event: onClick event from the done button
-//
-function showFront(event)
-{
-    var front = document.getElementById("front");
-    var back = document.getElementById("back");
-
-    if (window.widget) {
-        widget.prepareForTransition("ToFront");
-    }
-
-    front.style.display="block";
-    back.style.display="none";
-
-    if (window.widget) {
-        setTimeout('widget.performTransition();', 0);
-    }    
 }
 
 if (window.widget) {
@@ -132,38 +91,43 @@ function getSpecial(strong)
     if (strong) {
         selection += "€£¥@[]{},.;:´`^°ßâîêôûáíóéóúàìèòùÂÎÊÔÛÁÍÉÓÚÀÌÈÒÙžŽšŠãõñÃÕÑ¿¡¨®©ç¢Ç~œæŒÆøØëïöäüÿýÜÄÖÏÅËŸÝ";
     }
+    
     return selection.charAt(Math.floor(Math.random()*selection.length));
 }
 
 function isStrong()
 {
-    if(window.widget) {
+    if (window.widget) {
         var strongSetting = widget.preferenceForKey("strong");
         
         if (strongSetting) {
             return true;
         }
     }
-    return false;
+    
+    return true;
 }
 
 function minLength()
 {
-    if(window.widget) {
+    if (window.widget) {
         var minLength = widget.preferenceForKey("length");
         if (minLength && minLength.length > 0) {
             return parseInt(minLength);
         }
     }
-    return 12;
+    
+    return 30;
 }
 
+function showPassword(password)
+{
+    document.getElementById('password').value = password;
+    document.getElementById('lengthInfo').innerHTML = password.length != 0 ? password.length : "";
+}
 
 function generatePassword(event)
-{
-    widget.setPreferenceForKey(document.getElementById("strong").checked ? 1 : 0, "strong");
-    widget.setPreferenceForKey(document.getElementById("length").value, "length");
-    
+{   
     var strong = isStrong();
     var length = Math.round(minLength() * (1 + Math.random() * 0.4));
     var password = "";
@@ -179,6 +143,5 @@ function generatePassword(event)
         }
     }
         
-    document.getElementById('password').value = password;
-    document.getElementById('lengthInfo').innerHTML = password.length;
+    showPassword(password)
 }
